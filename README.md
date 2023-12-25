@@ -74,9 +74,6 @@ Use labels to categorize issues. Please apply the appropriate label when creatin
 - `contribution-welcome`: Indicates that contributions on this issue are welcome.
 
 ### Guidelines
-:: Initial setup
-	Login Register
-
 	Download git
 		-> Buka vscode, ke side bar bagian source control (logo 3 bulet sama garis)
 		-> Download 32/64 bit (kalo ragu, pilih 64 bit) windows setup (bukan portable)
