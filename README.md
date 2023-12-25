@@ -1,12 +1,10 @@
 ## Table of Contents
-1. [How to Contribute](#how-to-contribute)
-2. [Reporting Issues](#reporting-issues)
-3. [Proposing Changes](#proposing-changes)
-4. [Code Style Guidelines](#code-style-guidelines)
-5. [Commit Messages](#commit-messages)
-6. [Submitting a Pull Request](#submitting-a-pull-request)
-7. [Issues and Labels](#issues-and-labels)
-8. [License](#license)
+1. [Proposing Changes](#proposing-changes)
+2. [Code Style Guidelines](#code-style-guidelines)
+3. [Commit Messages](#commit-messages)
+4. [Submitting a Pull Request](#submitting-a-pull-request)
+5. [Issues and Labels](#issues-and-labels)
+6. [Guidelines](#guidelines)
 
 ### Proposing Changes
 If you'd like to propose changes or additions to the project:
@@ -63,7 +61,7 @@ When submitting a pull request:
 3. Ensure your branch is up-to-date with the main repository.
 
 ### Issues and Labels
-We use labels to categorize issues. Please apply the appropriate label when creating or triaging issues.
+Use labels to categorize issues. Please apply the appropriate label when creating or triaging issues.
 
 - `documentation`: Issues related to improving or clarifying existing documentation.
 - `enhancement`: Suggestions for enhancing the content or adding new guides.
@@ -75,8 +73,7 @@ We use labels to categorize issues. Please apply the appropriate label when crea
 - `discussion`: Open-ended discussions about potential improvements or changes.
 - `contribution-welcome`: Indicates that contributions on this issue are welcome.
 
-### GUIDELINE
-Course Outline
+### Guidelines
 :: Initial setup
 	Login Register
 
