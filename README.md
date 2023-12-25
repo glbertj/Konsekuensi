@@ -106,11 +106,6 @@ Use labels to categorize issues. Please apply the appropriate label when creatin
 		function/variable -> camelCase, akuMakanNasi
 		khusus HTML CSS, aku-makan-nasi
 
-:: Contributing
-	Commits
-		-> Kerjain kerjaan kalian
-		-> Commit, namain sesuai dengan aturan di readme repo master
-
 	Create pull request
 		-> Di file kalian kerja, di paling atas banget, taro comment, file ini ngapain aja, dan apa aja yg perlu kita tahu
 		-> PASTIIN KODE KALIAN UDH PALING UP TO DATE SAMA REPO MASTER
@@ -119,8 +114,3 @@ Use labels to categorize issues. Please apply the appropriate label when creatin
 		-> Click open new pull request ato apa gitu
 		-> Tunggu diaccept sama master
 		-> Tidur
-
-:: Others
-	Projects
-		-> Kalian semua bakal diassign sama tugas kalian
-		-> Pas mau pull request, pilih aja issue apa yg kalian kerjain, biar lebih rapih
