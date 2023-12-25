@@ -74,3 +74,56 @@ We use labels to categorize issues. Please apply the appropriate label when crea
 - `clarification`: Requests for additional clarification on specific sections.
 - `discussion`: Open-ended discussions about potential improvements or changes.
 - `contribution-welcome`: Indicates that contributions on this issue are welcome.
+
+GUIDELINE
+Course Outline
+:: Initial setup
+	Login Register
+
+	Download git
+		-> Buka vscode, ke side bar bagian source control (logo 3 bulet sama garis)
+		-> Download 32/64 bit (kalo ragu, pilih 64 bit) windows setup (bukan portable)
+		-> Next semua sampe install
+		-> Re-open vscode
+		-> Gk ush launch gitbash/open release notes, langsung finish aja
+		-> Cek di side bar yang logo 3 bulet sama garis, pastiin nggk disuruh donwload git lagi
+
+	Pulling projects
+		-> Buka https://github.com/Mona-besar/Konsekuensi
+		-> Click fork
+		-> Nama fork bebas trus save
+		-> Buka new window VSCode
+		-> Click ctrl + shift + e
+		-> Click clone repository -> Clone from github -> pilih repo yg tadi baru kebuat dari fork
+		-> Download nodejs di nodejs.org/en versi LTS
+		-> Cek udh kedownload ato belom pake `npm --v`
+		-> Run di command console `composer update` buat download vendor
+		-> Copy `example.env`
+		-> Rename yg baru dicopy jadi `.env`
+		-> run `php artisan serve`
+		-> Kalo gk bisa DM T061
+	
+		General naming convention
+		DATABASE -> SELECT * FROM
+		Class -> PascalCasing, AkuMakanNasi
+		function/variable -> camelCase, akuMakanNasi
+		khusus HTML CSS, aku-makan-nasi
+
+:: Contributing
+	Commits
+		-> Kerjain kerjaan kalian
+		-> Commit, namain sesuai dengan aturan di readme repo master
+
+	Create pull request
+		-> Di file kalian kerja, di paling atas banget, taro comment, file ini ngapain aja, dan apa aja yg perlu kita tahu
+		-> PASTIIN KODE KALIAN UDH PALING UP TO DATE SAMA REPO MASTER
+		-> PASTIIN GADA ERROR DAN JALAN SAMA KODE ORANG LAIN
+		-> Kalo udah yakin semuanya jadi, click contribute di page utama repo kalian (yang difork)
+		-> Click open new pull request ato apa gitu
+		-> Tunggu diaccept sama master
+		-> Tidur
+
+:: Others
+	Projects
+		-> Kalian semua bakal diassign sama tugas kalian
+		-> Pas mau pull request, pilih aja issue apa yg kalian kerjain, biar lebih rapih
