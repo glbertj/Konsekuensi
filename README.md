@@ -18,7 +18,7 @@ If you encounter bugs, issues, or have suggestions for improvement, please follo
     - Provide information about your environment (e.g., operating system, browser, or programming language version).
 
 ### Proposing Changes
-We welcome contributions! If you'd like to propose changes or additions to the project:
+If you'd like to propose changes or additions to the project:
 
 1. Fork the repository to your GitHub account.
 2. Create a new branch for your changes.
@@ -35,8 +35,6 @@ To maintain consistency and readability, follow these code style guidelines:
 - No trailing whitespace at the end of a line.
 - Only use comments to explain the algorithm.
 - Space between `if` and `(` (if (param) ...).
-- `f(void)` for 0-argument function declarations.
-- Newline between `}` and `else` instead of `} else {...}`.
 
 ### Commit Messages
 Please follow the conventional commit message format for our commits:
@@ -85,8 +83,3 @@ We use labels to categorize issues. Please apply the appropriate label when crea
 - `clarification`: Requests for additional clarification on specific sections.
 - `discussion`: Open-ended discussions about potential improvements or changes.
 - `contribution-welcome`: Indicates that contributions on this issue are welcome.
-
-### License
-By contributing to this project, you agree that your contributions will be licensed under the [CC0 1.0 Universal Public Domain Dedication](https://creativecommons.org/publicdomain/zero/1.0/).
-
-Thank you for your contributions!
