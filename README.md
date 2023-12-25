@@ -75,7 +75,7 @@ We use labels to categorize issues. Please apply the appropriate label when crea
 - `discussion`: Open-ended discussions about potential improvements or changes.
 - `contribution-welcome`: Indicates that contributions on this issue are welcome.
 
-GUIDELINE
+### GUIDELINE
 Course Outline
 :: Initial setup
 	Login Register
