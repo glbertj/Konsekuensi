@@ -8,15 +8,6 @@
 7. [Issues and Labels](#issues-and-labels)
 8. [License](#license)
 
-## How to Contribute
-### Reporting Issues
-If you encounter bugs, issues, or have suggestions for improvement, please follow these steps:
-
-1. Check the existing issues to see if the problem or suggestion has already been reported.
-2. If not, open a new issue with a clear title and detailed description.
-    - Include steps to reproduce the issue if applicable.
-    - Provide information about your environment (e.g., operating system, browser, or programming language version).
-
 ### Proposing Changes
 If you'd like to propose changes or additions to the project:
 
