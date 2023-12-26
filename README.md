@@ -103,11 +103,16 @@ Use labels to categorize issues. Please apply the appropriate label when creatin
 		function/variable -> camelCase, akuMakanNasi
 		khusus HTML CSS, aku-makan-nasi
 
-	Create pull request
+	Commit
 		-> Di file kalian kerja, di paling atas banget, taro comment, file ini ngapain aja, dan apa aja yg perlu kita tahu
 		-> PASTIIN KODE KALIAN UDH PALING UP TO DATE SAMA REPO MASTER
 		-> PASTIIN GADA ERROR DAN JALAN SAMA KODE ORANG LAIN
-		-> Kalo udah yakin semuanya jadi, click contribute di page utama repo kalian (yang difork)
-		-> Click open new pull request ato apa gitu
-		-> Tunggu diaccept sama master
-		-> Tidur
+		-> Kalo udah yakin semuanya jadi, click di bawah kiri VSCode kalian yang ada logo 3 bulet juga
+        -> Di atas bakal keluar menu gitu, pilih Kel-x kalian, kalau belum ada, pilih create new branch
+        -> Balik ke source control (di side bar), pastiin tulisan placeholder di box kiri nya (Message (Ctrl+enter to commit on "kelompok kalian"))
+        -> Commit
+
+    Gabungin sama master
+        -> Tinggal ke github website kalian, buka branch kalian, nanti ada tulisan contribute, pastiin branch kalian up to date dulu dan gk error ya
+
+    Bingung DM T061!!
