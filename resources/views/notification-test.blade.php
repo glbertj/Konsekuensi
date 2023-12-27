@@ -14,10 +14,11 @@
     <input type="text" id="taskBody" placeholder="Task Body">
     <input type="text" id="taskTarget" placeholder="On-click-direct-to link">
 
-    <button onclick="scheduleTask('taskTime', 'taskTitle', 'taskBody', 'taskTarget')">Schedule Task</button>
+    <button onclick="callNotification('taskTitle', 'taskBody', 'taskTarget')">Instant Task</button>
+    <button onclick="callNotification('taskTitle', 'taskBody', 'taskTarget', 'taskTime')">Schedule Task</button>
 
     <br> <br>
 
-    <button onclick="showGeneralNotification('Binusmaya time', 'This opens binusmaya website', 'https\://binusmaya.binus.ac.id/')">BinusMaya notification demo</button>
+    <button onclick="generalNotification('Binusmaya time', 'This opens binusmaya website', 'https\://binusmaya.binus.ac.id/')">BinusMaya notification demo</button>
 </body>
 </html>
