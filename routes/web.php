@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\bBoardController;
+use App\Http\Controllers\mainpageController;
+use App\Http\Controllers\bBoardDelController;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,11 +16,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/buletin',[mainpageController::class,'index'] );
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/bBoardAdd',[bBoardController::class,'index']);
+Route::post('/bBoardAdd',[bBoardController::class,'store']);
 
-Route::get('/notification-test', function () {
-    return view('notification-test');
-});
+Route::get('bBoardDelete',[bBoardDelController::class,'index']);
+Route::post('/bBoardDelete',[bBoardDelController::class,'delete']);
