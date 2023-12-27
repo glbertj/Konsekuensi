@@ -1,7 +1,7 @@
 @extends('layout.main')
 @section('mainContent')
-<div class="myposition-center" >
-    <h1>Delete Board</h1>
+<div class="myposition-centerx" >
+    <h1 class="text-center">Delete Board</h1>
     <div id="bBoardDelCont">
         @csrf
         <form action="/bBoardDelete" method="POST" >

@@ -7,9 +7,9 @@
             @csrf
             <input type="text" name="title" placeholder="title" id="title" required>
             <br>
-            <textarea name="description" cols="51" rows="10" placeholder="description" required></textarea>
+            <textarea name="description" cols="51" rows="10" placeholder="description" id="description" required></textarea>
             <br>
-            <button onclick="showGeneralNotification('title', 'title')" type="submit" class="btn btn-success" id="bBoardSubmit">Submit </button>
+            <button onclick="callNotification('title', 'description', 'title')" type="submit" class="btn btn-success" id="bBoardSubmit">Submit </button>
             <br>
         </form>
     </div>

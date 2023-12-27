@@ -1,3 +1,7 @@
+{{-- navbar component.
+call or use this component with @include('layout.nav'), --}}
+
+
 <nav class="myflex myalign-items-center myjustify-content-spaceBetween" id="nav">
     <div class=" d-flex flex-row " id="nav-left">
         <a href="#" class="navbar-brand">

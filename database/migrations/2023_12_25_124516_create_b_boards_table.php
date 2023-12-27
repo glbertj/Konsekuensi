@@ -1,4 +1,9 @@
 <?php
+// Table for buletin board,  Table name on database : b_boards
+// title for announcement title
+// description for announcement detail
+// timestamp saving created
+
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -16,9 +21,8 @@ return new class extends Migration
         Schema::create('b_boards', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('description');
-            $table->string('creator')->default('kosong');
-            $table->timestamp('start');
+            $table->text('description');
+            $table->timestamp('created');
             $table->timestamps();
         });
     }

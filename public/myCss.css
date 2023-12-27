@@ -52,6 +52,11 @@ body{
     left: 50%;
     transform: translate(-50%,-50%);
 }
+.myposition-centerx{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
 .mycircleBtn{
     position:fixed;
     aspect-ratio: 1/1;
@@ -62,6 +67,8 @@ body{
     border: none;
 }
 #bBoardDelCont{
+
+    width: 800px;
     padding: 20px;
     background-color: #0275d8;
     border-radius: 10px;
