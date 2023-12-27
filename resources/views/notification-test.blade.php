@@ -14,8 +14,8 @@
     <input type="text" id="taskBody" placeholder="Task Body">
     <input type="text" id="taskTarget" placeholder="On-click-direct-to link">
 
-    <button onclick="callNotification('taskTitle', 'taskBody', 'taskTarget')">Instant Task</button>
-    <button onclick="callNotification('taskTitle', 'taskBody', 'taskTarget', 'taskTime')">Schedule Task</button>
+    <button onclick="callNotification('taskTitle', 'taskBody', 'taskTarget', generalNotification)">Instant Task</button>
+    <button onclick="scheduleNotification('taskTitle', 'taskBody', 'taskTarget', 'taskTime')">Schedule Task</button>
 
     <br> <br>
 
