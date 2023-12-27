@@ -21,7 +21,11 @@ function callNotification(notificationTitle, notificationBody, notificationTarge
 }
 
 
+<<<<<<< HEAD
 function scheduleNotification(notificationTitle, notificationBody, notificationTarget, dateId, notificationMode = generalNotification) {
+=======
+function callNotification(notificationTitle, notificationBody, notificationTarget, dateId, notificationMode = generalNotification) {
+>>>>>>> c8af0f18b041b1a08bf1bd25cc69bf535d709f7f
     const title = document.getElementById(notificationTitle).value;
     const body = document.getElementById(notificationBody).value;
     const target = document.getElementById(notificationTarget).value;
