@@ -3,10 +3,10 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class CheckTrainer
+class Logout
 {
     /**
      * Handle an incoming request.
@@ -17,8 +17,8 @@ class CheckTrainer
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->role != "trainer"){
-            return redirect()->route('buletin');
+        if (Auth::check()){
+            return redirect()->route('login');
         }
         return $next($request);
     }

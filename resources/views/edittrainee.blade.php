@@ -7,18 +7,18 @@
     <title>User Profile</title>
     <style>
         body {
-            background-color: #4064d4;
+            background-color: skyblue;
             margin: 0;
             font-family: 'Arial', sans-serif;
         }
 
         .box {
-            /* border: 4px solid #1B2845; */
+            border: 4px solid skyblue;
             border-radius: 5px;
             box-sizing: border-box;
-            height: 900px;
+            height: 650px;
             width: 400px;
-            background-color: #F7EBE8;
+            background-color: whitesmoke;
             margin: 75px auto;
             overflow: hidden;
             padding: 20px;
@@ -29,7 +29,7 @@
             width: 130px;
             height: 130px;
             border-radius: 50%;
-            border: 5px solid #1B2845;
+            border: 5px solid #skyblue;
             margin: 0 auto 20px;
             display: block;
             cursor: pointer;
@@ -37,7 +37,7 @@
 
         h3 {
             margin-bottom: 20px;
-            color: #1B2845;
+            color: darkblue;
             font-size: 1.2em;
         }
 
@@ -70,7 +70,7 @@
         button {
             flex: 1;
             padding: 10px;
-            background-color: #4064d4;
+            background-color: #4caf50;
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -79,10 +79,6 @@
             font-size: 14px;
             transition: background-color 0.3s ease;
             max-width: 350px;
-        }
-        button:hover{
-            background-color: #4e73df;
-
         }
     </style>
 </head>
@@ -108,18 +104,8 @@
             <!-- Hidden file input -->
             <input type="file" name="image" id="file" accept="image/*">
             <input type="text" name="nama" placeholder="Nama">
-            <input type="text" name="jurusan" placeholder="Jurusan">
-            <input type="text" name="binusian" placeholder="Binusian">
-            <input type="text" name="kodetrainee" placeholder="Kode Trainee">
-            <input type="date" name="tanggal_lahir" placeholder="Tanggal Lahir">
             <input type="text" name="alamat" placeholder="Alamat">
             <input type="text" name="contact" placeholder="Contact">
-            <div class="radio">
-                <input type="radio" name="status" id="active" value = "Active" checked>
-                <label for="active">Active</label>
-                <input type="radio" name="status" id="inactive" value = "Inactive">
-                <label for="inactive">Inactive</label>
-            </div>
             <br>
             <br>
             <div class="btn">
@@ -132,7 +118,6 @@
                 <button id="button2">Change Password</button>
             </div>
         </form>
-        <br>
         <a class="small" href="{{ route('buletin') }}">Back!</a>
 
         <script>

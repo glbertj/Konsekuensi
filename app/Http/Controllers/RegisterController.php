@@ -29,36 +29,36 @@ class RegisterController extends Controller
     public function createTrainee(Request $req){
         // rules
 
-        // $rules = [
-        //     'email' => 'required|email|unique:mysql.konse.users,email',
-        //     'password' => 'required|min:8',
-        //     'confirmpassword' => 'required|same:password',
-        //     'nama' => 'required',
-        //     'binusian' => 'required',
-        //     'jurusan' => 'required',
-        //     'contact' => 'required',
-        //     'alamat' => 'required',
-        //     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        //     'kodetrainee' => 'required',
-        //     'tanggallahir' => 'required|date',
-        //     'status' => 'required'
-        // ];
+        $rules = [
+            'email' => 'required|email|unique:mysql.konse.users,email',
+            'password' => 'required|min:8',
+            'confirmpassword' => 'required|same:password',
+            'nama' => 'required',
+            'binusian' => 'required',
+            'jurusan' => 'required',
+            'contact' => 'required',
+            'alamat' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'kodetrainee' => 'required',
+            'tanggallahir' => 'required|date',
+            'status' => 'required'
+        ];
 
         // echo ($req->image);
         // validate
-        // $validator = Validator::make($req->all(), $rules);
+        $validator = Validator::make($req->all(), $rules);
         // dd($validator);
-        // // if error
+        // if error
         // dd($req->roles);
         Session::put('mysession', [
             'role' => $req->roles,
         ]);
-        // if ($validator->fails()) {
-        //     // $roles = Session::get('mysession')['role'];
-        //     // dd($roles);
+        if ($validator->fails()) {
+            // $roles = Session::get('mysession')['role'];
+            // dd($roles);
 
-        //     return back()->with('roles',$req->roles)->withErrors($validator)->withInput();
-        // }
+            return back()->with('role',$req->roles)->withErrors($validator)->withInput();
+        }
 
         //image
         $file = $req->file('image');
@@ -138,12 +138,11 @@ class RegisterController extends Controller
         Session::put('mysession', [
             'role' => $req->roles,
         ]);
-        dd(Session::get('mysession'));
-
-        //if error
         if ($validator->fails()) {
-            return back()->with('role', $req->roles)->withErrors($validator)->withInput();
+            // $roles = Session::get('mysession')['role'];
+            // dd($roles);
 
+            return back()->with('role',$req->roles)->withErrors($validator)->withInput();
         }
 
         // create uuid
@@ -179,15 +178,24 @@ class RegisterController extends Controller
         // Session::put('mysession', [
         //     'role' => $request->input('role'),
         // ]);
+        $rolepls = "a";
         if (Session::has('mysession.role')) {
             $rolepls = Session::get('mysession.role');
         }
         // dd($rolepls);
-        if($role == "trainee" || $rolepls == "trainee"){
-            return view('auth/register', ['role' => $role]);
-        }else if ($role == "trainer"|| $rolepls == "trainer"){
 
+        if($role == "trainee" ){
+            return view('auth/register', ['role' => $role]);
+        }else if ($role == "trainer"){
             return view('auth/registertrainer', ['role' => $role]);
+        }
+        if ($rolepls){
+            if($rolepls == "trainee"){
+                return view('auth/register', ['role' => $rolepls]);
+            }
+            if($rolepls == "trainer"){
+                return view('auth/registertrainer', ['role' => $rolepls]);
+            }
         }
     }
 

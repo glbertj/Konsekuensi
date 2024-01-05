@@ -20,6 +20,10 @@ class ProfileController extends Controller
         return view('edittrainee');
     }
 
+    public function traineedetail(){
+        return view('traineedetail');
+    }
+
     public function editpassview(){
         return view('editpassword');
     }
@@ -82,7 +86,15 @@ class ProfileController extends Controller
             'name' => $user->nama_lengkap,
             'uuid' => $user->id,
             'role' => $user->role,
-            'image' => $trainee->image
+            'image' => $trainee->image,
+            'binusian' => $user->binusian,
+            'jurusan' => $user->jurusan,
+            'kode' => $trainee->kode_trainee,
+            'dob' => $trainee->tanggal_lahir,
+            'alamat' => $trainee->alamat,
+            'contact' => $trainee->contact
+
+            // Add other data you want to store in the session
         ]);
         $user->save();
         $trainee->save();
@@ -107,7 +119,14 @@ class ProfileController extends Controller
                 'name' => $user->nama_lengkap,
                 'uuid' => $user->id,
                 'role' => $user->role,
-                'image' => $trainee->image
+                'image' => $trainee->image,
+                'binusian' => $user->binusian,
+                'jurusan' => $user->jurusan,
+                'kode' => $trainee->kode_trainee,
+                'dob' => $trainee->tanggal_lahir,
+                'alamat' => $trainee->alamat,
+                'contact' => $trainee->contact
+
                 // Add other data you want to store in the session
             ]);
         }else if($user->role == "trainer"){

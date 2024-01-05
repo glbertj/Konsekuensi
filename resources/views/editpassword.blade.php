@@ -7,26 +7,25 @@
     <style>
 
         body {
-            background-color: #4064d4;
+            background-color: #000bff;
             margin: 0;
             font-family: 'Arial', sans-serif;
         }
 
         .box{
-            /* border: 4px solid darkblue; */
+            border: 4px solid darkblue;
             border-radius: 5px;
             box-sizing: border-box;
-            height: auto;
+            height: 450px;
             width: 400px;
-            padding: 1rem;
-            background-color: #F7EBE8;
+            background-color: whitesmoke;
             margin: 75px auto;
             overflow: hidden;
         }
 
-        h2{
+        h1{
             text-align: center;
-            color: #1B2845;
+            color: darkblue;
         }
 
         img {
@@ -36,7 +35,7 @@
             border-radius: 50%;
             margin: 0 auto;
             box-sizing: border-box;
-            /* border: 5px solid #000bff; */
+            border: 5px solid #000bff;
             display: block;
             margin-top: 20px;
             margin-bottom: 20px;
@@ -101,11 +100,11 @@
     <div class ="box">
     <form action="{{ route('editpass') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <h2>CHANGE YOUR PASSWORD</h2>
+        <h1>CHANGE YOUR PASSWORD</h1>
         <input type="text" name = "email" placeholder="Email">
         <input type="password" name = "password" placeholder="New Password">
         <input type="password" name = "confirmpassword" placeholder="Confirm Password">
-        <button id="tombol2">Change Password</button> <br>
+        <button id="tombol2">Change Password</button>
         @if(Session::get('mysession')['role'] == "trainee" || Session::get('mysession')['role'] == "trainee admin")
             <a class="small" href="{{ route('edittrainee') }}">Back!</a>
         @endif

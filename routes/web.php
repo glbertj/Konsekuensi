@@ -10,8 +10,8 @@ use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\mainpageController;
 use App\Http\Controllers\bBoardDelController;
 use App\Http\Controllers\bBoardController;
-use App\Http\Controllers\EventController;
 use App\Http\Controllers\LeaderboardController;
+use App\Events\GlobalNotif;
 
 
 
@@ -30,16 +30,13 @@ use App\Http\Controllers\LeaderboardController;
 Route::controller(AuthController::class)->group(function () {
 	Route::get('/', 'loginPage')->name('login');
 	Route::post('login', 'login')->name('login.aksi');
-    Route::post('home','homePages')->middleware('security')->name('home');
-    Route::get('home', 'homePages')->middleware(['security', 'web'])->name('home');
-	Route::get('logout', 'logout')->middleware('security')->name('logout');
+    // Route::post('home','homePages')->middleware('security')->name('home');
+    // Route::get('home', 'homePages')->middleware(['security', 'web'])->name('home');
+    Route::get('logout', 'logout')->middleware(['security','logout'])->name('logout');
 });
 
 Route::get('/schedule-notifications', [AuthController::class,'sced'])->name('sced');
 
-Route::get('/notification-test', function () {
-    return view('notification-test');
-});
 
 Route::controller(RegisterController::class)->group(function () {
 	Route::get('roleregister', 'roleregister')->name('roleregister');
@@ -50,12 +47,11 @@ Route::get('/register/role', [RegisterController::class, 'chooseRole']);
 Route::post('register/trainer', [RegisterController::class, 'createTrainer'])->name('register.trainer');
 Route::post('register/trainee', [RegisterController::class, 'createTrainee'])->name('register.trainee');
 
-Route::get('/notification', function() {
-	view('notification-test');
-});
+
 
 Route::post('/edittrainee/editdata', [ProfileController::class, 'edittraineedata'])->name('edittraineedata')->middleware(['security','trainee']);
 Route::get('/edittrainee',[ProfileController::class,'edittrainee'])->name('edittrainee')->middleware(['security','trainee']);
+Route::get('/tdetail',[ProfileController::class,'traineedetail'])->name('traineedetail')->middleware(['security','trainee']);
 Route::post('/edittrainerdata',[ProfileController::class,'edittrainerdata'])->name('edittrainerdata')->middleware(['security','trainer']);
 Route::get('/edittrainer',[ProfileController::class,'edittrainer'])->name('edittrainer')->middleware(['security','trainer']);
 Route::get('/edittrainee/editpass',[ProfileController::class,'editpassview'])->name('editpassview')->middleware('security');
@@ -63,6 +59,7 @@ Route::post('/editpass/update',[ProfileController::class,'editpass'])->name('edi
 
 Route::post('users/getUsers', [TraineeController::class, 'getUsers'])->name('users.getUsers')->middleware('security');
 Route::get("trainee", [TraineeController::class, 'index'])->name('init')->middleware('security');
+
 // tidak kepakai
 Route::get("trainee/{TNumber}", [TraineeController::class, 'show'])->middleware('security');
 //
@@ -98,3 +95,11 @@ Route::put('/calendar', 'App\Http\Controllers\CalendarController@update'); // Ex
 Route::delete('/calendar/{id}', 'App\Http\Controllers\CalendarController@destroy')->name('calendar.destroy');
 Route::get('/calendar', [CalendarController::class,'getCalendar'])->name('calendar')->middleware('security');
 Route::delete('/api/events/{event}', [EventController::class, 'destroy'])->name('events.destroy');
+
+
+
+
+Route::get('/bBoardAdds', function () {
+    event(new GlobalNotif('CHECK ANNOUNCEMENT'));
+    return view('buletin');
+});
