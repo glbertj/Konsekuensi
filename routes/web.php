@@ -10,6 +10,7 @@ use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\mainpageController;
 use App\Http\Controllers\bBoardDelController;
 use App\Http\Controllers\bBoardController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\LeaderboardController;
 
 
@@ -92,7 +93,3 @@ Route::put('/calendar', 'App\Http\Controllers\CalendarController@update'); // Ex
 Route::delete('/calendar/{id}', 'App\Http\Controllers\CalendarController@destroy')->name('calendar.destroy');
 Route::get('/calendar', [CalendarController::class,'getCalendar'])->name('calendar')->middleware('security');
 Route::delete('/api/events/{event}', [EventController::class, 'destroy'])->name('events.destroy');
-
-
-
-
