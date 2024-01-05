@@ -11,9 +11,8 @@ use App\Http\Controllers\mainpageController;
 use App\Http\Controllers\bBoardDelController;
 use App\Http\Controllers\bBoardController;
 use App\Http\Controllers\LeaderboardController;
-use App\Events\GlobalNotif;
-
-
+use App\Http\Controllers\EventController;
+use App\Models\Event;	
 
 /*
 |--------------------------------------------------------------------------
@@ -30,9 +29,9 @@ use App\Events\GlobalNotif;
 Route::controller(AuthController::class)->group(function () {
 	Route::get('/', 'loginPage')->name('login');
 	Route::post('login', 'login')->name('login.aksi');
-    // Route::post('home','homePages')->middleware('security')->name('home');
-    // Route::get('home', 'homePages')->middleware(['security', 'web'])->name('home');
-    Route::get('logout', 'logout')->middleware(['security','logout'])->name('logout');
+    Route::post('home','homePages')->middleware('security')->name('home');
+    Route::get('home', 'homePages')->middleware(['security', 'web'])->name('home');
+	Route::get('logout', 'logout')->middleware('security')->name('logout');
 });
 
 Route::get('/schedule-notifications', [AuthController::class,'sced'])->name('sced');
@@ -51,7 +50,6 @@ Route::post('register/trainee', [RegisterController::class, 'createTrainee'])->n
 
 Route::post('/edittrainee/editdata', [ProfileController::class, 'edittraineedata'])->name('edittraineedata')->middleware(['security','trainee']);
 Route::get('/edittrainee',[ProfileController::class,'edittrainee'])->name('edittrainee')->middleware(['security','trainee']);
-Route::get('/tdetail',[ProfileController::class,'traineedetail'])->name('traineedetail')->middleware(['security','trainee']);
 Route::post('/edittrainerdata',[ProfileController::class,'edittrainerdata'])->name('edittrainerdata')->middleware(['security','trainer']);
 Route::get('/edittrainer',[ProfileController::class,'edittrainer'])->name('edittrainer')->middleware(['security','trainer']);
 Route::get('/edittrainee/editpass',[ProfileController::class,'editpassview'])->name('editpassview')->middleware('security');
@@ -59,7 +57,6 @@ Route::post('/editpass/update',[ProfileController::class,'editpass'])->name('edi
 
 Route::post('users/getUsers', [TraineeController::class, 'getUsers'])->name('users.getUsers')->middleware('security');
 Route::get("trainee", [TraineeController::class, 'index'])->name('init')->middleware('security');
-
 // tidak kepakai
 Route::get("trainee/{TNumber}", [TraineeController::class, 'show'])->middleware('security');
 //
@@ -90,16 +87,17 @@ Route::get('/editproject', [ProjectController::class,'editproject'])->name('edit
 Route::get('/leaderboard', [LeaderboardController::class,'show'])->name('leaderboard')->middleware('security');
 Route::get('/leaderboard/{uuid?}', [LeaderboardController::class, 'show'])->name('leaderboard.show')->middleware('security');
 
-Route::post('/calendar', 'App\Http\Controllers\CalendarController@store'); // Example route for storing new events
-Route::put('/calendar', 'App\Http\Controllers\CalendarController@update'); // Example route for updating events
-Route::delete('/calendar/{id}', 'App\Http\Controllers\CalendarController@destroy')->name('calendar.destroy');
-Route::get('/calendar', [CalendarController::class,'getCalendar'])->name('calendar')->middleware('security');
+// Route::post('/calendar', 'App\Http\Controllers\CalendarController@store'); // Example route for storing new events
+// Route::put('/calendar', 'App\Http\Controllers\CalendarController@update'); // Example route for updating events
+// Route::delete('/calendar/{id}', 'App\Http\Controllers\CalendarController@destroy')->name('calendar.destroy');
+// Route::get('/calendar', [CalendarController::class,'getCalendar'])->name('calendar')->middleware('security');
 Route::delete('/api/events/{event}', [EventController::class, 'destroy'])->name('events.destroy');
+Route::get('/calendar/api', function () {
+    $events = Event::all(['id', 'title', 'start', 'end'])->toJson();
 
-
-
-
-Route::get('/bBoardAdds', function () {
-    event(new GlobalNotif('CHECK ANNOUNCEMENT'));
-    return view('buletin');
+    return $events;
 });
+Route::post('/events', [EventController::class, 'store'])->name('store');
+
+Route::get('/events/create', [EventController::class, 'create'])->name('create');
+

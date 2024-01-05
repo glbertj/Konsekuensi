@@ -42,7 +42,6 @@ $check = 0;
         .checks:checked ~ label {
             color: rgb(0, 135, 20);
         }
-    
     </style>
 </head>
 <body>

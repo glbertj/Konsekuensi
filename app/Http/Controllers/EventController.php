@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-
 use DateTime;
+Use Illuminate\Support\Str;
 
 class EventController extends Controller
 {
@@ -19,28 +19,34 @@ class EventController extends Controller
     {
 
         $data = Event::all();
+        $newData = [];
+
 
         foreach ($data as $event) {
-            $event->backgroundColor = $event->color;
-            $event->borderColor = $event->color;
+            $event = collect($event->toArray());
+            $event->put('backgroundColor', $event->get('color'));
+            $event->put('borderColor', $event->get('color'));
             unset($event->color);
 
 
-            // Validate start and end times
-            $start = Carbon::parse($event->start);
-            $end = Carbon::parse($event->end);
+            $start = Carbon::parse($event->get('start'));
+            $end = Carbon::parse($event->get('end'));
 
             if ($start->greaterThanOrEqualTo($end)) {
                 continue;
             }
-            // Adjust timezone using Carbon
-            $event->start = Carbon::createFromFormat('Y-m-d H:i:s', $event->start, 'UTC')
-                ->setTimezone('Asia/Jakarta')
-                ->toIso8601String();
 
-            $event->end = Carbon::createFromFormat('Y-m-d H:i:s', $event->end, 'UTC')
-                ->setTimezone('Asia/Jakarta')
-                ->toIso8601String();
+            $event->put('start', Str::replace('+00:00','+07:00', $start
+                // ->setTimezone('Asia/Jakarta')
+                ->toIso8601String()));
+
+            $event->put('end', Str::replace('+00:00','+07:00', $end
+                // ->setTimezone('Asia/Jakarta')
+                ->toIso8601String()));
+            // dd($event->end);
+
+            $newData[] = $event;
+                        
         }
 
 
@@ -53,7 +59,7 @@ class EventController extends Controller
         //     $data[$i]->end = $data[$i]->end->shiftTimezone("Asia/Jakarta")->toISOString();
         // }
 
-        return response()->json($data);
+        return response()->json($newData);
     }
 
     /**
@@ -102,10 +108,10 @@ class EventController extends Controller
         Event::create($data);
 
         return response()->redirectToRoute('calendar');
-    }
+    }   
 
     /**
-     * Display the specified resource.
+     * Display the specified resource.  
      *
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
@@ -115,12 +121,6 @@ class EventController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Event  $event
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Event $event)
     {
         //
@@ -138,10 +138,8 @@ class EventController extends Controller
         if ($request->start_time) {
             $eventId = $event->id;
 
-            // Delete the existing event by ID
             Event::destroy($eventId);
 
-            // Validate and retrieve data for the new event
             $data = $request->validate([
                 'title' => "required|string",
                 'start' => "required|date",
@@ -152,13 +150,11 @@ class EventController extends Controller
             ]);
 
             if ($request->start_time) {
-                // Format start time to ISO format
                 $data['start'] = explode('T', $data['start'])[0] . 'T' . $data['start_time'] . ':00.000Z';
                 unset($data['start_time']);
             }
 
             if ($request->end_time) {
-                // Format end time to ISO format
                 $data['end'] = explode('T', $data['end'])[0] . 'T' . $data['end_time'] . ':00.000Z';
                 unset($data['end_time']);
             }

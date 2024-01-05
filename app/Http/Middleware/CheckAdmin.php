@@ -18,7 +18,7 @@ class CheckAdmin
     public function handle(Request $request, Closure $next)
     {
         if (Auth::user()->role != "trainee admin"){
-            return redirect()->route('buletin');
+            return redirect()->route('home');
         }
         return $next($request);
     }

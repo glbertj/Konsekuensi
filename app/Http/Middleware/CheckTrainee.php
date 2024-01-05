@@ -19,7 +19,7 @@ class CheckTrainee
     {
         // dd(Auth::user());
         if (Auth::user()->role != "trainee" && Auth::user()->role != "trainee admin"){
-            return redirect()->route('buletin');
+            return redirect()->route('home');
         }
         return $next($request);
     }

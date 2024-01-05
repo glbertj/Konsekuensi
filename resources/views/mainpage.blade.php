@@ -160,9 +160,8 @@
     .task-list-item{
         display:flex;
         width:150px;
-        height:50px;
+        height:150px;
     }
-
 </style>
 
 </head>

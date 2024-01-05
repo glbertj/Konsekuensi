@@ -25,8 +25,8 @@
 
     <!-- Fallback or error message -->
         {{-- {{dd($role)}} --}}
-        {{-- <p>Please select a role.</p> --}}
-        {{-- @if ($errors->any())
+        <p>Please select a role.</p>
+        @if ($errors->any())
         <div style="color: red;">
             <ul>
                 @foreach ($errors->all() as $error)
@@ -34,8 +34,8 @@
                 @endforeach
             </ul>
         </div>
-        @endif --}}
-
+        @endif
+        
     <form action="{{ route('register.trainee') }}" method="POST" class="user" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name = "roles" id = "roles" value = "{{$role}}">
@@ -64,13 +64,13 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input name="kodetrainee" type="number" class="form-control form-control-user @error('kodetrainee') is-invalid @enderror" id="kodeTrainee" placeholder="Kode Trainee">
+                                    <input name="kodetrainee" type="text" class="form-control form-control-user @error('kodetrainee') is-invalid @enderror" id="kodeTrainee" placeholder="Kode Trainee">
                                     @error('kodetrainee')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input name="contact" type="number" class="form-control form-control-user @error('contact') is-invalid @enderror" id="exampleInputContact" placeholder="Contact">
+                                    <input name="contact" type="text" class="form-control form-control-user @error('contact') is-invalid @enderror" id="exampleInputContact" placeholder="Contact">
                                     @error('contact')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -82,7 +82,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input name="binusian" type="number" class="form-control form-control-user @error('binusian') is-invalid @enderror" id="exampleInputAddress" placeholder="binusian">
+                                    <input name="binusian" type="text" class="form-control form-control-user @error('binusian') is-invalid @enderror" id="exampleInputAddress" placeholder="binusian">
                                     @error('binusian')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -119,8 +119,24 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label>Status :</label>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" id="statusActive" name="status" class="custom-control-input" value="active" checked>
+                                        <label class="custom-control-label" for="statusActive">Active</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" id="statusQuit" name="status" class="custom-control-input" value="Inactive">
+                                        <label class="custom-control-label" for="statusQuit">Quit</label>
+                                    </div>
+                                    @error('status')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
+                                </div>
                                 <button type="submit" class="btn btn-primary btn-user btn-block">Register Account</button>
+
                             </div>
+
                           <hr>
                           <div class="text-center">
                             <a class="small" href="{{ route('login') }}">Already have an account? Login!</a>

@@ -18,7 +18,7 @@ class CheckTrainer
     public function handle(Request $request, Closure $next)
     {
         if (Auth::user()->role != "trainer"){
-            return redirect()->route('buletin');
+            return redirect()->route('home');
         }
         return $next($request);
     }

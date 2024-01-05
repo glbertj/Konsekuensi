@@ -8,23 +8,16 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Users;
 use App\Models\Trainee;
 use App\Models\Trainer;
-use Illuminate\Support\Facades\DB;
+
 
 class ProfileController extends Controller
 {
     public function edittrainer(){
-
         return view('edittrainer');
     }
 
-    public function traineedetail(){
-        return view('traineedetail');
-    }
-
     public function edittrainee(){
-        $user = Users::where('id', Session::get('mysession')['uuid'])->first();
-        $trainee = Trainee::where('uuid', $user->id)->first();
-        return view('edittrainee',compact('user','trainee'));
+        return view('edittrainee');
     }
 
     public function editpassview(){
@@ -61,7 +54,15 @@ class ProfileController extends Controller
         $user = Users::where('id', Session::get('mysession')['uuid'])->first();
 
         $trainee = Trainee::where('uuid', $user->id)->first();
+        // dd($trainee);
+        $user->nama_lengkap = $req->nama != null? $req->nama:$user->nama_lengkap;
+        $user->jurusan = $req->jurusan != null? $req->jurusan:$user->jurusan;
+        $user->binusian = $req->binusian != null? $req->binusian:$user->binusian;
         $user->updated_at = now();
+        $trainee->kode_trainee = $req->kodetrainee != null? $req->kodetrainee:$trainee->kode_trainee;
+        // dd($req->status);
+        $trainee->status = $req->status != null? $req->status:$trainee->status;
+        $trainee->tanggal_lahir = $req->tanggallahir != null? $req->tanggallahir:$trainee->tanggal_lahir;
         $trainee->updated_at = now();
 
         // dd($file);
@@ -71,7 +72,7 @@ class ProfileController extends Controller
             unlink($trainee->image);
             Storage::delete('public/'.$trainee->image);
             $imageName = 'image/'.$imageName;
-            $trainee->image = $imageName;
+            $trainee->image = $imageName ;
         }else {
             $trainee->image = $trainee->image;
         }
@@ -83,13 +84,8 @@ class ProfileController extends Controller
             'role' => $user->role,
             'image' => $trainee->image
         ]);
-
-        $data = [
-            'contact' => $req->contact,
-            'alamat' => $req->alamat
-        ];
-
-        DB::table('trainees')->where('uuid',$user->id)->update($data);
+        $user->save();
+        $trainee->save();
 
         return redirect()->back()->with('change_password_success', 'Change Password Succesfully')->withInput();
     }
@@ -132,7 +128,5 @@ class ProfileController extends Controller
 
         return redirect()->back()->with('change_password_success', 'Change Password Succesfully')->withInput();
     }
-
-
 
 }

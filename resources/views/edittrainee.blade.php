@@ -7,29 +7,29 @@
     <title>User Profile</title>
     <style>
         body {
-            background-color: #39A7FF;
+            background-color: #000bff;
             margin: 0;
             font-family: 'Arial', sans-serif;
         }
 
         .box {
-            border: 4px solid #39A7FF;
-            border-radius: 2rem;
+            border: 4px solid darkblue;
+            border-radius: 5px;
             box-sizing: border-box;
-            height: 700px;
+            height: 900px;
             width: 400px;
-            background-color: rgb(245, 245, 245, 0.8);
+            background-color: whitesmoke;
             margin: 75px auto;
             overflow: hidden;
             padding: 20px;
-            text-align: center;
+            text-align: center; /* Center align text */
         }
 
         img {
             width: 130px;
             height: 130px;
             border-radius: 50%;
-            border: 3px solid #39A7FF;
+            border: 5px solid #000bff;
             margin: 0 auto 20px;
             display: block;
             cursor: pointer;
@@ -86,8 +86,6 @@
 <body>
 
     <div class="box">
-        
-        {{-- {{ $user }} --}}
         @if(session('change_password_failed'))
         <div class="alert alert-danger">
             <p>{{ session('change_password_success') }}</p>
@@ -101,19 +99,23 @@
         <form action="{{ route('edittraineedata') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <!-- Add an ID to the image for easier reference in JavaScript -->
-            <img id="profileImage" src="{{Session::get('mysession')['image']}}" style="object-fit: cover;">
+            <img id="profileImage" src="{{Session::get('mysession')['image']}}">
             <h3>Welcome, {{Session::get('mysession')['name']}}</h3>
             <!-- Hidden file input -->
             <input type="file" name="image" id="file" accept="image/*">
-
-            <input type="text" name="alamat" placeholder="Alamat" value="{{ $trainee['alamat'] }}">
-            <input type="text" name="contact" placeholder="Contact" value="{{ $trainee['contact'] }}">
-            {{-- <div class="radio">
+            <input type="text" name="nama" placeholder="Nama">
+            <input type="text" name="jurusan" placeholder="Jurusan">
+            <input type="text" name="binusian" placeholder="Binusian">
+            <input type="text" name="kodetrainee" placeholder="Kode Trainee">
+            <input type="date" name="tanggal_lahir" placeholder="Tanggal Lahir">
+            <input type="text" name="alamat" placeholder="Alamat">
+            <input type="text" name="contact" placeholder="Contact">
+            <div class="radio">
                 <input type="radio" name="status" id="active" value = "Active" checked>
                 <label for="active">Active</label>
                 <input type="radio" name="status" id="inactive" value = "Inactive">
                 <label for="inactive">Inactive</label>
-            </div> --}}
+            </div>
             <br>
             <br>
             <div class="btn">
