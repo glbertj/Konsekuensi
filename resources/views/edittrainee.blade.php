@@ -7,18 +7,18 @@
     <title>User Profile</title>
     <style>
         body {
-            background-color: #000bff;
+            background-color: #4064d4;
             margin: 0;
             font-family: 'Arial', sans-serif;
         }
 
         .box {
-            border: 4px solid darkblue;
+            /* border: 4px solid #1B2845; */
             border-radius: 5px;
             box-sizing: border-box;
             height: 900px;
             width: 400px;
-            background-color: whitesmoke;
+            background-color: #F7EBE8;
             margin: 75px auto;
             overflow: hidden;
             padding: 20px;
@@ -29,7 +29,7 @@
             width: 130px;
             height: 130px;
             border-radius: 50%;
-            border: 5px solid #000bff;
+            border: 5px solid #1B2845;
             margin: 0 auto 20px;
             display: block;
             cursor: pointer;
@@ -37,7 +37,7 @@
 
         h3 {
             margin-bottom: 20px;
-            color: darkblue;
+            color: #1B2845;
             font-size: 1.2em;
         }
 
@@ -70,7 +70,7 @@
         button {
             flex: 1;
             padding: 10px;
-            background-color: #4caf50;
+            background-color: #4064d4;
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -79,6 +79,10 @@
             font-size: 14px;
             transition: background-color 0.3s ease;
             max-width: 350px;
+        }
+        button:hover{
+            background-color: #4e73df;
+
         }
     </style>
 </head>
@@ -128,6 +132,7 @@
                 <button id="button2">Change Password</button>
             </div>
         </form>
+        <br>
         <a class="small" href="{{ route('buletin') }}">Back!</a>
 
         <script>
