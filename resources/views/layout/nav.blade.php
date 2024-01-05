@@ -32,10 +32,10 @@
             @endif
 
             @if(Session::get('mysession')['role'] == "trainer")
-            <a href="{{ route('edittrainer') }}" class="text-white font-bold ml-4 transition duration-300 transform hover:scale-105 hover:text-gray-300">
-                <span class="text-sm">Welcome,</span>
-                <span class="text-lg text-white">{{ Session::get('mysession')['name'] }}</span>
-            </a>
+                <a href="{{ route('edittrainer') }}" class="text-white font-bold ml-4 transition duration-300 transform hover:scale-105 hover:text-gray-300">
+                    <span class="text-sm">Welcome,</span>
+                    <span class="text-lg text-white">{{ Session::get('mysession')['name'] }}</span>
+                </a>
             @endif
         </div>
     </nav>
