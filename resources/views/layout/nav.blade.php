@@ -25,12 +25,18 @@
                 <a href="{{ route("edittrainee") }}">
                     <img id="file" src="{{ Session::get('mysession')['image'] }}" alt="Profile" class="h-10 w-10 rounded-full border-2 border-white transition duration-300 transform hover:scale-110 hover:border-gray-300">
                 </a>
+                <a href="{{ route('edittrainee') }}" class="text-white font-bold ml-4 transition duration-300 transform hover:scale-105 hover:text-gray-300">
+                    <span class="text-sm">Welcome,</span>
+                    <span class="text-lg text-white">{{ Session::get('mysession')['name'] }}</span>
+                </a>
             @endif
 
+            @if(Session::get('mysession')['role'] == "trainer")
             <a href="{{ route('edittrainer') }}" class="text-white font-bold ml-4 transition duration-300 transform hover:scale-105 hover:text-gray-300">
                 <span class="text-sm">Welcome,</span>
                 <span class="text-lg text-white">{{ Session::get('mysession')['name'] }}</span>
             </a>
+            @endif
         </div>
     </nav>
 </div>
