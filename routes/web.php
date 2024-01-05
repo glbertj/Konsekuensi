@@ -37,6 +37,9 @@ Route::controller(AuthController::class)->group(function () {
 
 Route::get('/schedule-notifications', [AuthController::class,'sced'])->name('sced');
 
+Route::get('/notification-test', function () {
+    return view('notification-test');
+});
 
 Route::controller(RegisterController::class)->group(function () {
 	Route::get('roleregister', 'roleregister')->name('roleregister');
@@ -47,7 +50,9 @@ Route::get('/register/role', [RegisterController::class, 'chooseRole']);
 Route::post('register/trainer', [RegisterController::class, 'createTrainer'])->name('register.trainer');
 Route::post('register/trainee', [RegisterController::class, 'createTrainee'])->name('register.trainee');
 
-
+Route::get('/notification', function() {
+	view('notification-test');
+});
 
 Route::post('/edittrainee/editdata', [ProfileController::class, 'edittraineedata'])->name('edittraineedata')->middleware(['security','trainee']);
 Route::get('/edittrainee',[ProfileController::class,'edittrainee'])->name('edittrainee')->middleware(['security','trainee']);
