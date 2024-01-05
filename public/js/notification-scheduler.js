@@ -16,32 +16,55 @@ function callNotification(notificationTitle, notificationBody, notificationTarge
     const title = document.getElementById(notificationTitle).value;
     const body = document.getElementById(notificationBody).value;
     const target = document.getElementById(notificationTarget).value;
+    console.log(title);
 
     notificationMode(title, body, target);
 }
 
 
-function scheduleNotification(notificationTitle, notificationBody, notificationTarget, dateId, notificationMode = generalNotification) {
+let notificationCounter = localStorage.getItem('notificationCounter') || 0;
+function scheduleNotification(notificationTitle, notificationBody, notificationTarget, dateId, notificationMode = generalNotification, timeDifference) {
     const title = document.getElementById(notificationTitle).value;
     const body = document.getElementById(notificationBody).value;
     const target = document.getElementById(notificationTarget).value;
-    
+
     const dateTime = new Date(document.getElementById(dateId).value);
+    console.log(dateTime);
     const taskTime = dateTime.getTime();
     const currentTime = new Date().getTime();
-    const timeDifference = taskTime - currentTime;
+    const adjustedTime = taskTime - timeDifference * 60 * 1000;
+    const adjustedTimeDifference = adjustedTime - currentTime;
+
+    console.log('Time difference:', currentTime);
+    console.log('Time difference:', taskTime);
+    console.log('Adjusted Time:', adjustedTime);
+    console.log('Time difference:', adjustedTimeDifference);
+    console.log('Time difference in second:', adjustedTimeDifference / 1000);
 
     // Ganti logic di sini jadi pake worker / task scheduler
-    if (timeDifference > 0) {
+    if (adjustedTimeDifference > 0) {
         setTimeout(function () {
-            notificationMode(title, body, target);
-        }, timeDifference);
-        showSuccessAlert(dateTime);
+            try {
+                notificationMode(title, body, target);
+            } catch (error) {
+                console.error('Error in notificationMode:', error);
+            }
+        }, adjustedTimeDifference);
+
+        // Optional: You can use a unique identifier for each notification
+        notificationCounter++;
+        localStorage.setItem('notificationCounter', notificationCounter);
+        console.log(notificationCounter);
+
+        showSuccessAlert(dateTime, notificationCounter);
     } else {
         showFailAlert();
     }
     // ======================================================
 }
+
+// Rest of your code...
+
 
 
 function showSuccessAlert(dateTime) {
@@ -72,17 +95,3 @@ function generalNotification(title, body, target) {
     }
 }
 
-
-
-// You can add custom notifications down, just follow the template from showGeneralNotification
-function customNotification() {
-
-}
-
-function customNotification() {
-    
-}
-
-function customNotification() {
-    
-}

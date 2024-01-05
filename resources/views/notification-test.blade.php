@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.12/push.min.js"></script>
-    <script src="{{ asset('js/notification-scheduler.js') }}"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.12/push.min.js"></script>
+    <script src="{{ asset('js/notification-scheduler.js') }}"></script> --}}
 </head>
 <body>
     <label for="taskTime">Task Time:</label>
