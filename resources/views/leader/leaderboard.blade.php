@@ -10,14 +10,14 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #F7EBE8;
+            background-color: #f4f4f4;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
 
         header {
-            background-color: #1B2845;
+            background-color: #333;
             color: #fff;
         }
 
@@ -31,7 +31,7 @@
             max-width: 800px;
             margin: 20px auto;
             padding: 20px;
-            background-color: #Fff;
+            background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
         }
