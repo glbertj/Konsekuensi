@@ -68,11 +68,11 @@ function scheduleNotification(notificationTitle, notificationBody, notificationT
 
 
 function showSuccessAlert(dateTime) {
-    alert(`Task scheduled at: ${dateTime}`);
+    // alert(`Task scheduled at: ${dateTime}`);
 }
 
 function showFailAlert() {
-    alert('Scheduling failed');
+    alert('Project due date must be in the future');
 }
 
 
