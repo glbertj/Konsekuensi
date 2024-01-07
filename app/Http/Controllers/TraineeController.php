@@ -156,19 +156,24 @@ class TraineeController extends Controller
                 } else {
                     $html .= '<img src="' . $user->image . '" class="card-img-top" style=" width:80%; object-fit:cover;" alt="...">';
                 }
-                $html .= '</div><hr>';
-                $html .= '<a href="' . route('traineelistadmin', ['id' => $user->id]) . '">';
-                $html .= '<div class="id-details" style="height:70%; width:75%; padding:12px;">';
-                $html .= '<h5 class="card-title">T' . $user->kode_trainee . ' - ' . $user->users['nama_lengkap'] . '</h5>';
-                $html .= '<h5 class="card-title">Email    :' . $user->users['email'] . '</h5>';
-                $html .= '<h5 class="card-title">Jurusan  :' . $user->users['jurusan'] . '</h5>';
-                $html .= '<h5 class="card-title">Binusian  :B' . $user->users['binusian'] . '</h5>';
-                $html .= '<h5 class="card-title">Tanggal Lahir  :' . $user->tanggal_lahir . '</h5>';
-                $html .= '<h5 class="card-title">Alamat:' . $user->alamat . '</h5>';
-                $html .= '<h5 class="card-title">Contact:' . $user->contact . '</h5>';
-                $html .= '<h5 class="card-title">Status:' . $user->status . '</h5>';
-                $html .= '</div></a>';
-
+                $html .= '</div>';
+                $html .= '<div style="height:70%; width:75%;padding:12px;"><hr>';
+                $html .= '<div class="id-details">';
+                $html .= '<h5 class="card-title">T' . $user->kode_trainee . ' - ' . $user->users->nama_lengkap . '</h5>';
+                $html .= '<h5 class="card-title">Email             : ' . $user->users->email . '</h5>';
+                $html .= '<h5 class="card-title">Jurusan           : ' . $user->users->jurusan . '</h5>';
+                $html .= '<h5 class="card-title">Binusian          : B' . $user->users->binusian . '</h5>';
+                $html .= '<h5 class="card-title">Tanggal Lahir     : ' . $user->tanggal_lahir . '</h5>';
+                $html .= '<h5 class="card-title">Alamat            : ' . $user->alamat . ' </h5>';
+                $html .= '<h5 class="card-title">Contact           : ' . $user->contact . '</h5>';
+                $html .= '<h5 class="card-title">Status            : ' . $user->status . '</h5>';
+                $html .= '<h5 class="card-title">';
+                $html .= '<button><a class="btn btn-danger" href="' . route('inactive', ['data1' => $user->uuid, 'data2' => "Inactive"]) . '">Inactive</a></button>';
+                $html .= '<button><a class="btn btn-success" href="' . route('active', ['data1' => $user->uuid, 'data2' => "active"]) . '">Active</a></button>';
+                $html .= '</h5>';
+                $html .= '</div>';
+                $html .= '</div>';
+                $html .= '</div>';
             }
 
             $html .= '</div>';

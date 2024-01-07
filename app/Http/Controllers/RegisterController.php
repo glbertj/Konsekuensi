@@ -41,7 +41,6 @@ class RegisterController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'kodetrainee' => 'required',
             'tanggallahir' => 'required|date',
-            'status' => 'required'
         ];
 
         // echo ($req->image);

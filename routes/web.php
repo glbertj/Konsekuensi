@@ -58,7 +58,7 @@ Route::get('/edittrainee/editpass',[ProfileController::class,'editpassview'])->n
 Route::post('/editpass/update',[ProfileController::class,'editpass'])->name('editpass')->middleware('security');
 
 Route::post('users/getUsers', [TraineeController::class, 'getUsers'])->name('users.getUsers')->middleware('security');
-Route::post('users/getUsers1', [TraineeController::class, 'getUsersadmin'])->name('users.getUsers1')->middleware(['security','admin']);
+Route::post('users/getUsers1', [TraineeController::class, 'getUsersadmin'])->name('users.getUsers1')->middleware(['security']);
 Route::get("trainee", [TraineeController::class, 'index'])->name('init')->middleware('security');
 Route::get("trainee1", [TraineeController::class, 'index1'])->name('init1')->middleware(['security','admin']);
 Route::get("trainee2", [TraineeController::class, 'active'])->name('active')->middleware(['security','admin']);

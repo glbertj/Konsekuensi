@@ -26,7 +26,7 @@
     <!-- Fallback or error message -->
         {{-- {{dd($role)}} --}}
         {{-- <p>Please select a role.</p> --}}
-        {{-- @if ($errors->any())
+        @if ($errors->any())
         <div style="color: red;">
             <ul>
                 @foreach ($errors->all() as $error)
@@ -34,7 +34,7 @@
                 @endforeach
             </ul>
         </div>
-        @endif --}}
+        @endif
 
     <form action="{{ route('register.trainee') }}" method="POST" class="user" enctype="multipart/form-data">
         @csrf

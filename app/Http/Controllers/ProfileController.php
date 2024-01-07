@@ -61,6 +61,8 @@ class ProfileController extends Controller
         $user = Users::where('id', Session::get('mysession')['uuid'])->first();
 
         $trainee = Trainee::where('uuid', $user->id)->first();
+        $trainee->alamat = $req->alamat? $req->alamat:$trainee->alamat;
+        $trainee->contact = $req->contact? $req->contact:$trainee->contact;
         $user->updated_at = now();
         $trainee->updated_at = now();
 

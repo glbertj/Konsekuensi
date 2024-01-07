@@ -7,12 +7,23 @@
     <style>
 
         body {
-            background-color: #000bff;
+            background-color: #39A7FF;
             margin: 0;
             font-family: 'Arial', sans-serif;
         }
 
-        
+        .box {
+            border: 4px solid #39A7FF;
+            border-radius: 2rem;
+            box-sizing: border-box;
+            height: 450px;
+            width: 400px;
+            background-color: rgb(245, 245, 245, 0.8);
+            margin: 75px auto;
+            overflow: hidden;
+            padding: 20px;
+            text-align: center;
+        }
 
         h1{
             text-align: center;
