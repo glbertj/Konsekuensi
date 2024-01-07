@@ -1,6 +1,6 @@
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 <div class="bg-gray-900">
-    <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
+    <nav class="mx-auto px-4 py-4 flex items-center justify-between">
         <div class="flex items-center space-x-4">
             <a href="{{ route('buletin') }}" class="text-white font-bold transition duration-300 transform hover:scale-110 hover:text-gray-300">Home</a>
             @if (Auth::user()->role == 'trainee' || Auth::user()->role == 'trainee admin')
@@ -22,10 +22,10 @@
 
         <div class="flex items-center">
             @if(Session::get('mysession')['role'] == "trainee" || Session::get('mysession')['role'] == "trainee admin")
-                <a href="{{ route("edittrainee") }}">
+                <a href="{{ route("traineedetail") }}">
                     <img id="file" src="{{ Session::get('mysession')['image'] }}" alt="Profile" class="h-10 w-10 rounded-full border-2 border-white transition duration-300 transform hover:scale-110 hover:border-gray-300">
                 </a>
-                <a href="{{ route('edittrainee') }}" class="text-white font-bold ml-4 transition duration-300 transform hover:scale-105 hover:text-gray-300">
+                <a href="{{ route('traineedetail') }}" class="text-white font-bold ml-4 transition duration-300 transform hover:scale-105 hover:text-gray-300">
                     <span class="text-sm">Welcome,</span>
                     <span class="text-lg text-white">{{ Session::get('mysession')['name'] }}</span>
                 </a>

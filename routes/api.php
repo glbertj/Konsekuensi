@@ -43,3 +43,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource("events", EventController::class);
 
+Route::delete('/events/{event}', 'EventController@destroy');

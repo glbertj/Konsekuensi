@@ -15,3 +15,10 @@
     </div>
 @endsection
 
+<script src="{{ asset('js/app.js') }}"></script>
+<script>
+    document.getElementById('bBoardSubmit').addEventListener('click', function() {
+        fetch('/bBoardAdds', { method: 'GET' });
+    });
+   </script>
+
