@@ -285,11 +285,9 @@
                                         html: `
                                         <div style="background-color:${arg.event.backgroundColor}; padding: 0%; margin:0px;">
                                             <div style="color: white; padding: 5px"><div>
-                                            <b>Start:</b> ${start.toLocaleTimeString()}</div>
-                                                </div<br><div style="display:flex;"><b>End:</b> &nbsp;${end.toLocaleTimeString()}&nbsp;
-                                                <p style="color: yellow;">(${dueTimeString})
+                                            <p style="color: yellow;">&nbsp;${start.toLocaleTimeString()} - ${end.toLocaleTimeString()}&nbsp;
                                             </p> </div><div style="white-space; pre-wrap; color: white;">
-                                                ${formattedTitle}</div><br> </div>
+                                                ${formattedTitle}</div></div>
                                         </div>`,
                                         backgroundColor: arg.event.backgroundColor,
                                     };
