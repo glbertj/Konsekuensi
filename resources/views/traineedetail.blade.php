@@ -122,17 +122,20 @@
                 <span id="myProfile">Profile</span>
                 <div id="data-text">
                     <p>Nama : {{Session::get('mysession')['name']}}</p>
-                    <!-- <p>Kode Trainee : {{Session::get('mysession')['kode']}}</p>
+                    <p>Kode Trainee : {{Session::get('mysession')['kode']}}</p>
                     <p>Jurusan : {{Session::get('mysession')['jurusan']}}</p>
                     <p>Binusian :{{Session::get('mysession')['binusian']}}</p>
                     <p>DOB :{{Session::get('mysession')['dob']}}</p>
                     <p>Alamat :{{Session::get('mysession')['alamat']}}</p>
-                    <p>Contact :{{Session::get('mysession')['contact']}}</p> -->
+                    <p>Contact :{{Session::get('mysession')['contact']}}</p>
                 </div>
                 <div  id="button-container">
                     <form action="{{ route('edittrainee') }}">
                     <button id="edit-button" type="submit">Edit Profile</button>
                     </form>
+                    <form action="{{ route('buletin') }}">
+                        <button id="edit-button" type="submit">Go Back</button>
+                        </form>
                     <form action="/logout" method="GET">
                     <button id="logout-button"type="submit">Log Out</button>
                     </form>

@@ -20,5 +20,5 @@
     document.getElementById('bBoardSubmit').addEventListener('click', function() {
         fetch('/bBoardAdds', { method: 'GET' });
     });
-   </script>
+</script>
 

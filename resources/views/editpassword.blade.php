@@ -12,16 +12,7 @@
             font-family: 'Arial', sans-serif;
         }
 
-        .box{
-            border: 4px solid darkblue;
-            border-radius: 5px;
-            box-sizing: border-box;
-            height: 450px;
-            width: 400px;
-            background-color: whitesmoke;
-            margin: 75px auto;
-            overflow: hidden;
-        }
+        
 
         h1{
             text-align: center;

@@ -14,8 +14,14 @@
             <a href="{{ route('leaderboard') }}" class="text-white font-bold hover:text-gray-300 transition duration-300 transform hover:scale-105">Leaderboard</a>
 
             <a href="{{ route('calendar') }}" class="text-white font-bold hover:text-gray-300 transition duration-300 transform hover:scale-105">Schedule</a>
+            @if(Session::get('mysession')['role'] == "trainee")
+                <a href="{{ route('init') }}" class="text-white font-bold hover:text-gray-300 transition duration-300 transform hover:scale-105">Trainee List</a>
 
-            <a href="{{ route('init') }}" class="text-white font-bold hover:text-gray-300 transition duration-300 transform hover:scale-105">Trainee List</a>
+            @endif
+            @if(Session::get('mysession')['role'] == "trainee admin")
+                <a href="{{ route('init1') }}" class="text-white font-bold hover:text-gray-300 transition duration-300 transform hover:scale-105">Trainee List</a>
+
+            @endif
 
             <a href="{{ route('logout') }}" class="text-red-500 font-bold transition duration-300 transform hover:scale-110 hover:text-gray-300">Log Out</a>
         </div>

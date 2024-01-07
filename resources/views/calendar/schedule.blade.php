@@ -177,8 +177,8 @@
                                 minute: '2-digit',
                                 hour12: false,
                             },
-                            height: 'auto', 
-                            scrollTime: '00:00', 
+                            height: 'auto',
+                            scrollTime: '00:00',
                             scrollTimeEnd: '24:00',
 
                             slotLabelFormat: {
@@ -189,7 +189,7 @@
                             headerToolbar: {
                                 left: 'prev,next',
                                 center: 'title',
-                                right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+                                right: 'dayGridMonth,timeGridDay,listMonth'
                             },
                             eventDidMount: function(info) {
                                 var {
@@ -283,7 +283,7 @@
 
                                     return {
                                         html: `
-                                        <div style="background-color:${arg.event.backgroundColor}; padding: 7%; margin:0px;">
+                                        <div style="background-color:${arg.event.backgroundColor}; padding: 0%; margin:0px;">
                                             <div style="color: white; padding: 5px"><div>
                                             <b>Start:</b> ${start.toLocaleTimeString()}</div>
                                                 </div<br><div style="display:flex;"><b>End:</b> &nbsp;${end.toLocaleTimeString()}&nbsp;

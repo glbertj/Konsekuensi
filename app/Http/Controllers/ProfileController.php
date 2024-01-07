@@ -81,7 +81,13 @@ class ProfileController extends Controller
             'name' => $user->nama_lengkap,
             'uuid' => $user->id,
             'role' => $user->role,
-            'image' => $trainee->image
+            'image' => $trainee->image,
+            'binusian' => $user->binusian,
+            'jurusan' => $user->jurusan,
+            'kode' => $trainee->kode_trainee,
+            'dob' => $trainee->tanggal_lahir,
+            'alamat' => $trainee->alamat,
+            'contact' => $trainee->contact
         ]);
 
         $data = [
@@ -111,7 +117,13 @@ class ProfileController extends Controller
                 'name' => $user->nama_lengkap,
                 'uuid' => $user->id,
                 'role' => $user->role,
-                'image' => $trainee->image
+                'image' => $trainee->image,
+                'binusian' => $user->binusian,
+                'jurusan' => $user->jurusan,
+                'kode' => $trainee->kode_trainee,
+                'dob' => $trainee->tanggal_lahir,
+                'alamat' => $trainee->alamat,
+                'contact' => $trainee->contact
             ]);
         }else if($user->role == "trainer"){
             $trainer = Trainer::where('uuid', $user->id)->first();
