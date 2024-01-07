@@ -39,12 +39,12 @@ class AuthController extends Controller
                     'uuid' => $user->id,
                     'role' => $user->role,
                     'image' => $trainee->image,
-                    'binusian' => $user->binusian,
-                    'jurusan' => $user->jurusan,
-                    'kode' => $trainee->kode_trainee,
-                    'dob' => $trainee->tanggal_lahir,
-                    'alamat' => $trainee->alamat,
-                    'contact' => $trainee->contact
+                    // 'binusian' => $user->binusian,
+                    // 'jurusan' => $user->jurusan,
+                    // 'kode' => $trainee->kode_trainee,
+                    // 'dob' => $trainee->tanggal_lahir,
+                    // 'alamat' => $trainee->alamat,
+                    // 'contact' => $trainee->contact
                 ]);
             }else if($user->role == "trainer"){
                 $trainer = Trainer::where('uuid', $user->id)->first();

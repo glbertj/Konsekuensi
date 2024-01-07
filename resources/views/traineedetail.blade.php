@@ -10,9 +10,6 @@
         body{
     top: 0;
 }
-.container{
-
-}
 
 #outer-container{
     position: absolute;
@@ -121,16 +118,16 @@
             <div class="display-container" id="img-container">
                <img id="img-display" src="{{Session::get('mysession')['image']}}">
             </div>
-            <div class="display-container" id="data-container" style="">
+            <div class="display-container" id="data-container">
                 <span id="myProfile">Profile</span>
                 <div id="data-text">
                     <p>Nama : {{Session::get('mysession')['name']}}</p>
-                    <p>Kode Trainee : T{{Session::get('mysession')['kode']}}</p>
+                    <!-- <p>Kode Trainee : {{Session::get('mysession')['kode']}}</p>
                     <p>Jurusan : {{Session::get('mysession')['jurusan']}}</p>
                     <p>Binusian :{{Session::get('mysession')['binusian']}}</p>
                     <p>DOB :{{Session::get('mysession')['dob']}}</p>
                     <p>Alamat :{{Session::get('mysession')['alamat']}}</p>
-                    <p>Contact :{{Session::get('mysession')['contact']}}</p>
+                    <p>Contact :{{Session::get('mysession')['contact']}}</p> -->
                 </div>
                 <div  id="button-container">
                     <form action="{{ route('edittrainee') }}">

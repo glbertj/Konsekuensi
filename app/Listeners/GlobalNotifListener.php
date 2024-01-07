@@ -26,7 +26,7 @@ class GlobalNotifListener implements ShouldQueue
      */
     public function handle(GlobalNotif $event)
     {
-        broadcast(new ChristmasNotification($event->message));
+        broadcast(new GlobalNotif($event->message));
 
     }
 }
