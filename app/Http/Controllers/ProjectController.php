@@ -145,8 +145,6 @@ class ProjectController extends Controller
             DB::table('project__tables')->where('id', $project->id)->delete();
         }
         $users = Trainee::get()->first();
-        // dd($users);
-        // dd(Session::get('mysession')['uuid']);
         $project_user = Project_Users::where('user_id', $users->uuid)->get();
 
         $projectIds = $project_user->pluck('project_id')->toArray();
@@ -191,9 +189,7 @@ class ProjectController extends Controller
         ]);
 
         $validator = Validator::make($req->all(), $rules);
-        // // if error
         if ($validator->fails()) {
-            // dd($validator);
             return back()->withErrors($validator)->withInput();
         }
 
@@ -212,7 +208,6 @@ class ProjectController extends Controller
             $concat1 = 'task'.$i;
             $concat2 = 'desc'.$i;
             $concat3 = 'score'.$i;
-            // dd($req->task2);
             if(!($req->$concat1 == null &&$req->$concat2 == null &&$req->$concat3 == null )){
                 $list = new List_Table([
                     'project_id' => $project_tables->id,
@@ -226,14 +221,9 @@ class ProjectController extends Controller
             }
 
         }
-
-        // dd($listIds);
         $trainees = Trainee::all();
         foreach ($trainees as $trainee){
-            // dd($trainee);
             foreach($listIds as $ids){
-                // dd($trainee);
-                // dd($trainee->uuid);
                 $projectuser = new Project_Users ([
 
                     'user_id' => $trainee->uuid,
@@ -241,12 +231,9 @@ class ProjectController extends Controller
                     'status' => false,
                     'list_id' => $ids,
                 ]);
-                // dd($projectuser);
                 $projectuser ->save();
             }
         }
-
-        // Redirect or return a response
         return redirect()->route('project');
     }
 
@@ -260,32 +247,25 @@ class ProjectController extends Controller
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
-
-        // dd($req);
         $project_tables =Project_Table::find($req->id);
-        // dd($project_tables);
         $project_tables->title = $req->name? $req->name:$project_tables->title;
         $project_tables->end_date = $req->deadline? $req->deadline:$project_tables->end_date;
-        // $project_tables->save();
 
         $listIds = [];
         $count = $req->count;
         $hitung = 1;
         $listidpertama = $req->listidpertama;
-        // dd($req);
 
         while ($hitung <= $count) {
             $concat1 = 'task' . $hitung;
             $concat2 = 'desc' . $hitung;
             $concat3 = 'score' . $hitung;
 
-            // Assuming $req->listidpertama is the project_id
             $project_tables = Project_Table::find($req->listidpertama);
 
             if ($listidpertama != $req->listidterakhir+1) {
                 $list = List_Table::find($listidpertama);
 
-                // Update the existing list if it exists
                 if ($list) {
                     $list->list = $req->$concat1 ?: $list->list;
                     $list->desc = $req->$concat2 ?: $list->desc;
@@ -294,7 +274,6 @@ class ProjectController extends Controller
                     $listIds[] = $list->id;
                 }
             } else {
-                // dd($req);
                 if (!($req->$concat1 == null && $req->$concat2 == null && $req->$concat3 == null)) {
                     $list = new List_Table([
                         'project_id' => $project_tables->id,
@@ -310,18 +289,13 @@ class ProjectController extends Controller
             $listidpertama ++;
             $hitung++;
         }
-        // dd($listIds);
 
         $trainees = Trainee::all();
-        // echo('sdaads');
         $listidpertama = $req->listidpertama;
         foreach ($trainees as $trainee){
             foreach($listIds as $ids){
-                // dd($ids);
-                // dd($trainee->uuid);
                 $projectuser = Project_Users::where('user_id',$trainee->uuid)->where('list_id',$ids)
                 ->where('project_id',$req->id)->get();
-                // dd($projectuser);
                 if($projectuser->isEmpty()){
 
                     $projectuser = new Project_Users ([
@@ -330,7 +304,6 @@ class ProjectController extends Controller
                         'status' => false,
                         'list_id' => $ids,
                     ]);
-                    // dd($projectuser);
                     $projectuser ->save();
                 }
             }
@@ -340,8 +313,6 @@ class ProjectController extends Controller
     }
 
     public function edit(Request $req){
-
-        // dd($req);
         $now = now()->timezone('Asia/Jakarta');
 
         $projectsToDelete = DB::table('project__tables')
@@ -357,7 +328,6 @@ class ProjectController extends Controller
         
         $count = $req->counting;
         $id = $req->id;
-        // dd($req->counting);
         $projectIds = is_array($req->id) ? $req->id : [$req->id];
         $projectuser = Project_Users::whereIn('project_id', $projectIds)->get();
         $lists = List_Table::whereIn('project_id', $projectIds)->get();
@@ -367,14 +337,11 @@ class ProjectController extends Controller
 
     public function destroy(Request $req)
     {
-        // dd($req->id);
         $idArray = explode(',', $req->id);
         Project_Users::whereIn('project_id', $idArray)->delete();
         List_Table::whereIn('project_id', $idArray)->delete();
         Project_Table::whereIn('id', $idArray)->delete();
         session()->flash('success', 'Deleted successfully');
-
-        // Optionally, you can redirect or return a response
         return redirect()->back();
     }
 }

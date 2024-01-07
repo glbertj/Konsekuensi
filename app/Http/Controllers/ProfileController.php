@@ -112,7 +112,6 @@ class ProfileController extends Controller
                 'uuid' => $user->id,
                 'role' => $user->role,
                 'image' => $trainee->image
-                // Add other data you want to store in the session
             ]);
         }else if($user->role == "trainer"){
             $trainer = Trainer::where('uuid', $user->id)->first();
@@ -123,7 +122,6 @@ class ProfileController extends Controller
                 'role' => $user->role,
                 'inisial' =>$trainer->inisial,
                 'jabatan' => $trainer->jabatan,
-                // Add other data you want to store in the session
             ]);
         }
 
@@ -132,7 +130,4 @@ class ProfileController extends Controller
 
         return redirect()->back()->with('change_password_success', 'Change Password Succesfully')->withInput();
     }
-
-
-
 }

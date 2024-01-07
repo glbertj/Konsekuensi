@@ -3,12 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\bBoard;
-use Illuminate\Http\Request;
-use App\Models\Project_Table;
-use App\Models\Project_Users;
-use App\Models\List_Table;
 use App\Models\Trainee;
-use App\Models\Users;
 use Illuminate\Support\Facades\DB;
 
 class mainpageController extends Controller
@@ -120,8 +115,6 @@ class mainpageController extends Controller
         }
 
         $trainees = Trainee::all();
-
-        // return view('leader.leaderboard', compact('leaderboard','leaderboard1','trainee','projecttitle','projectId'));
         return view("mainpage",["marque"=> bBoard::all()],compact('leaderboard1','trainees'));
     }
 }

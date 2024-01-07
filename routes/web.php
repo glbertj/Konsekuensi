@@ -11,8 +11,8 @@ use App\Http\Controllers\mainpageController;
 use App\Http\Controllers\bBoardDelController;
 use App\Http\Controllers\bBoardController;
 use App\Http\Controllers\LeaderboardController;
-use App\Events\GlobalNotif;
-
+use App\Http\Controllers\EventController;
+use App\Models\Event;	
 
 
 /*
@@ -90,16 +90,12 @@ Route::get('/editproject', [ProjectController::class,'editproject'])->name('edit
 Route::get('/leaderboard', [LeaderboardController::class,'show'])->name('leaderboard')->middleware('security');
 Route::get('/leaderboard/{uuid?}', [LeaderboardController::class, 'show'])->name('leaderboard.show')->middleware('security');
 
-Route::post('/calendar', 'App\Http\Controllers\CalendarController@store'); // Example route for storing new events
-Route::put('/calendar', 'App\Http\Controllers\CalendarController@update'); // Example route for updating events
-Route::delete('/calendar/{id}', 'App\Http\Controllers\CalendarController@destroy')->name('calendar.destroy');
-Route::get('/calendar', [CalendarController::class,'getCalendar'])->name('calendar')->middleware('security');
 Route::delete('/api/events/{event}', [EventController::class, 'destroy'])->name('events.destroy');
+Route::get('/calendar/api', function () {
+    $events = Event::all(['id', 'title', 'start', 'end'])->toJson();
 
-
-
-
-Route::get('/bBoardAdds', function () {
-    event(new GlobalNotif('CHECK ANNOUNCEMENT'));
-    return view('buletin');
+    return $events;
 });
+Route::post('/events', [EventController::class, 'store'])->name('store');
+
+Route::get('/events/create', [EventController::class, 'create'])->name('create');
